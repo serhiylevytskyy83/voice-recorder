@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMicrophone } from "@fortawesome/free-solid-svg-icons"
 import { faStop } from "@fortawesome/free-solid-svg-icons"
 import "./style.css";
+import image from "../voice_line.jpg"
 
 import RecordedVoice from "./RecordedVoice"
 
@@ -109,17 +110,24 @@ export default function AudioRecorder() {
                 }
                 {!recording.active ?
                 (
-                <button className="button" onClick={start}>
-                    <FontAwesomeIcon icon={faMicrophone} size="5x"/>
-                </button>) :(
-                <button className="button" onClick={() => stream.recorder.stop()}>
-                    <FontAwesomeIcon icon={faStop} size="5x"/>
-                </button>
+                    <button className="button" onClick={start}>
+                        <FontAwesomeIcon icon={faMicrophone} size="4x"/>
+                    </button>
+                ) :(
+                <div>
+                    <button className="button" onClick={() => stream.recorder.stop()}>
+                        <FontAwesomeIcon icon={faStop} size="4x"/>
+                    </button>
+                    <img src={image} className="image" />
+                </div>
                 )
                 }
+
             </div>    
         {(recording.available && !recording.active) && 
-        <RecordedVoice url={recording.url} cancel={cancel}/>
+            <div>
+                <RecordedVoice url={recording.url} cancel={cancel}/>
+            </div>
         }
     </div>
   );

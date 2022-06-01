@@ -46,3 +46,8 @@ body{
 .fa-trash:hover{
   background-color: rgb(155, 150, 150);
 } 
+.image{
+  height: 40px;
+  font-weight: 100px;
+  display: grid;
+}
