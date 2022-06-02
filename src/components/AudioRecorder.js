@@ -56,13 +56,10 @@ export default function AudioRecorder() {
       };
 
       mediaRecorder.ondataavailable = function (e) {
-        // console.log("data available");
         chunks.current.push(e.data);
       };
 
       mediaRecorder.onstop = async function () {
-        // console.log("stopped");
-
         const url = URL.createObjectURL(chunks.current[0]);
         chunks.current = [];
 
@@ -101,7 +98,7 @@ export default function AudioRecorder() {
   return (
     <div className="wrapper">
         <div className="items">
-                <h2>Voice recorder</h2>
+                <h2 test-id="title">Voice recorder</h2>
                 {stream.error &&
                     <h5>Your audio device not found</h5>  
                 } 
@@ -110,12 +107,12 @@ export default function AudioRecorder() {
                 }
                 {!recording.active ?
                 (
-                    <button className="button" onClick={start}>
+                    <button test-id="buttonStart" className="button" onClick={start}>
                         <FontAwesomeIcon icon={faMicrophone} size="4x"/>
                     </button>
                 ) :(
                 <div>
-                    <button className="button" onClick={() => stream.recorder.stop()}>
+                    <button test-id="buttonStop" className="button" onClick={() => stream.recorder.stop()}>
                         <FontAwesomeIcon icon={faStop} size="4x"/>
                     </button>
                     <img src={image} className="image" />
